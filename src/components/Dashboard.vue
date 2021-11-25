@@ -1,8 +1,6 @@
 <template>
   <section class="dashboard">
-    <Card />
-    <Card :name="this.firstcity" :temp="this.temp" :status="status" />
-    <Card />
+    <Card v-for="item in citys" :key="item.id" :city="item" />
   </section>
 </template>
 
@@ -16,10 +14,30 @@ export default {
   },
   data() {
     return {
-      firstcity: "Urubici, BR",
-      temp: 15,
+      citys: [
+        { id: 0, name: "Nuuk", temp: "" },
+        { id: 1, name: "Urubici", temp: "" },
+        { id: 2, name: "Nairobi", temp: "" },
+      ],
       status: "Update at 02:34 PM",
     };
+  },
+  async mounted() {
+    this.getInfoCity();
+  },
+  methods: {
+    async getInfoCity() {
+      for (var i = 0; i < this.citys.length; i++) {
+        try {
+          await this.$store.dispatch("getInfos", this.citys[i].name);
+          this.citys[i].temp = Math.round(
+            this.$store.state.citysInfo[i].main.temp - 273.15
+          );
+        } catch (e) {
+          console.error(e);
+        }
+      }
+    },
   },
 };
 </script>

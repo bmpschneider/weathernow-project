@@ -1,12 +1,12 @@
 <template>
   <div class="content-card">
     <div class="card-title">
-      {{ name }}
+      {{ city.name }}
     </div>
     <hr />
 
     <div class="card-temperature">
-      {{ temp }}<span class="temp-fixed">°</span>
+      {{ city.temp }}<span class="temp-fixed">°</span>
     </div>
 
     <div class="card-footer">
@@ -28,6 +28,7 @@
         {{ status }}
       </div>
     </div>
+    <button @click="setInfoCitys">botao</button>
   </div>
 </template>
 
@@ -35,14 +36,21 @@
 export default {
   name: "Card",
   props: {
-    name: String,
-    temp: Number,
-    status: String,
+    city: {
+      id: Number,
+      name: String,
+      temp: String,
+    },
   },
   data() {
     return {
-      firstcity: "Urubici, BR",
+      status: "",
     };
+  },
+  methods: {
+    setInfoCitys() {
+      this.temp = this.$store.state.citysInfo[this.city.id].main.temp;
+    },
   },
 };
 </script>
