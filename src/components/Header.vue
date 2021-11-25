@@ -10,7 +10,7 @@ export default {
 };
 </script>
 
-<style>
+<style scooped>
 .header {
   display: flex;
   justify-content: center;

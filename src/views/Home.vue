@@ -2,7 +2,7 @@
   <div id="app">
     <Header />
     <main id="main">
-      <Dashboard msg="Welcome to Your Vue.js App" />
+      <Dashboard />
     </main>
   </div>
 </template>

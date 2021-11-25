@@ -1,21 +1,36 @@
 <template>
-  <section class="dashboard"></section>
+  <section class="dashboard">
+    <Card />
+    <Card :name="this.firstcity" :temp="this.temp" :status="status" />
+    <Card />
+  </section>
 </template>
 
 <script>
+import Card from "./Card.vue";
+
 export default {
-  name: "HelloWorld",
-  props: {
-    msg: String,
+  name: "Dashboard",
+  components: {
+    Card,
+  },
+  data() {
+    return {
+      firstcity: "Urubici, BR",
+      temp: 15,
+      status: "Update at 02:34 PM",
+    };
   },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .dashboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #f1f1f1;
-  min-height: 900px;
+  min-height: 800px;
   min-width: 1000px;
 }
 </style>
