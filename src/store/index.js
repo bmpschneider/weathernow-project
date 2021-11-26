@@ -11,7 +11,6 @@ export default new Vuex.Store({
   mutations: {
     SET_INFOS(state, infos) {
       state.citysInfo.push(infos);
-      localStorage.setItem("cityInfos", infos);
     },
   },
   actions: {

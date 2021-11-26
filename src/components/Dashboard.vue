@@ -15,28 +15,90 @@ export default {
   data() {
     return {
       citys: [
-        { id: 0, name: "Nuuk", temp: "" },
-        { id: 1, name: "Urubici", temp: "" },
-        { id: 2, name: "Nairobi", temp: "" },
+        {
+          id: 0,
+          name: "Nuuk",
+          country: "GL",
+          temp: "",
+          humidity: "",
+          pressure: "",
+          lastupdate: "",
+          loader: "",
+          error: "",
+        },
+        {
+          id: 1,
+          name: "Urubici",
+          country: "BR",
+          temp: "",
+          humidity: "",
+          pressure: "",
+          lastupdate: "",
+          loader: "",
+          error: "",
+        },
+        {
+          id: 2,
+          name: "Nairobil",
+          country: "KE",
+          temp: "",
+          humidity: "",
+          pressure: "",
+          lastupdate: "",
+          loader: "",
+          error: "",
+        },
       ],
-      status: "Update at 02:34 PM",
     };
   },
   async mounted() {
     this.getInfoCity();
+    setInterval(this.getInfoCity, 300000);
+    setInterval(this.clearCache(), 5000);
   },
   methods: {
     async getInfoCity() {
       for (var i = 0; i < this.citys.length; i++) {
+        this.citys[i].loader = true;
+        this.citys[i].error = false;
         try {
           await this.$store.dispatch("getInfos", this.citys[i].name);
+          this.citys[i].country = this.$store.state.citysInfo[i].sys.country;
           this.citys[i].temp = Math.round(
             this.$store.state.citysInfo[i].main.temp - 273.15
           );
+          this.citys[i].humidity = this.$store.state.citysInfo[i].main.humidity;
+          this.citys[i].pressure = this.$store.state.citysInfo[i].main.pressure;
+          this.citys[i].lastupdate = new Date();
+          this.citys[i].lastupdate = this.dateRefactor(
+            this.citys[i].lastupdate
+          );
+          if (this.citys[i].temp <= 5) {
+            this.citys[i].tempclass = "temp-cold";
+          } else if (this.citys[i].temp <= 25) {
+            this.citys[i].tempclass = "temp-average";
+          } else {
+            this.citys[i].tempclass = "temp-hot";
+          }
+          this.citys[i].loader = false;
         } catch (e) {
+          this.citys[i].loader = false;
+          this.citys[i].error = true;
           console.error(e);
         }
       }
+      // localStorage.setItem("cityInfos", this.citys);
+    },
+    dateRefactor(data) {
+      return (data = [
+        data.getHours(),
+        data.getMinutes(),
+        data.getSeconds(),
+      ].join(":"));
+    },
+    clearCache() {
+      // this.$store.state.citysInfo.replaceState({});
+      // localStorage.removeItem("cityInfos");
     },
   },
 };
@@ -48,7 +110,7 @@ export default {
   justify-content: center;
   align-items: center;
   background-color: #f1f1f1;
-  min-height: 800px;
+  min-height: 700px;
   min-width: 1000px;
 }
 </style>
