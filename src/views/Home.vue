@@ -25,4 +25,10 @@ export default {
   display: flex;
   justify-content: center;
 }
+
+@media (max-width: 600px) {
+  #main {
+    display: block;
+  }
+}
 </style>

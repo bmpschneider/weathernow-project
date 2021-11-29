@@ -78,7 +78,7 @@ export default {
           } else if (this.citys[i].temp <= 25) {
             this.citys[i].tempclass = "temp-average";
           } else {
-            this.citys[i].tempclass = "temp-hot";
+            this.citys[i].tempclass = "temp-warm";
           }
           this.citys[i].loader = false;
         } catch (e) {
@@ -112,5 +112,13 @@ export default {
   background-color: #f1f1f1;
   min-height: 700px;
   min-width: 1000px;
+}
+
+@media (max-width: 600px) {
+  .dashboard {
+    display: grid;
+    min-width: unset;
+    padding-top: 15px;
+  }
 }
 </style>

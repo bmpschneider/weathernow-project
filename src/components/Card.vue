@@ -80,7 +80,7 @@ export default {
         } else if (this.city.temp <= 25) {
           this.city.tempclass = "temp-average";
         } else {
-          this.city.tempclass = "temp-hot";
+          this.city.tempclass = "temp-warm";
         }
         this.city.loader = false;
       } catch (e) {
@@ -94,13 +94,20 @@ export default {
 </script>
 
 <style scoped>
+@media (max-width: 600px) {
+  .content-card {
+    display: flex;
+    width: 250px !important;
+  }
+}
+
 .content-card {
   display: flex;
   flex-direction: column;
   background-color: white;
   width: 210px;
   min-height: 200px;
-  margin: 0 20px;
+  margin: 15px 20px;
   border-radius: 4px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 9px;
 }
@@ -120,7 +127,7 @@ export default {
   justify-content: center;
   align-items: center;
   font-size: 65px;
-  min-height: 90px;
+  min-height: 100px;
   padding: 10px;
 }
 
