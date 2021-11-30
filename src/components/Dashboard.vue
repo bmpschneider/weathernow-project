@@ -118,5 +118,13 @@ export default {
     padding-top: 15px;
     min-height: 750px;
   }
+
+  .dashboard :nth-child(1) {
+    order: 3;
+  }
+
+  .dashboard :nth-child(3) {
+    order: 3;
+  }
 }
 </style>

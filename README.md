@@ -1,11 +1,12 @@
 # weathernow-project
+This project is a responsive weather interface using VueJS and OpenWeather API.
 
-## Project setup
+## Install
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### Start the app
 ```
 yarn serve
 ```
@@ -20,5 +21,10 @@ yarn build
 yarn lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Run Tests
+```
+yarn test:unit
+```
+
+
+
