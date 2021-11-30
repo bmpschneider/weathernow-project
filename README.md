@@ -33,7 +33,7 @@ $ npm install
 
 ```bash
 
-yarn serve
+$ yarn serve
 
 # or, 
 
