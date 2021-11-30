@@ -20,7 +20,7 @@
       </div>
 
       <div class="card-footer">
-        <div class="card-footer-info">
+        <div class="card-footer-info" v-if="this.city.full">
           <div>
             HUMIDITY
             <div class="info-conditions">
@@ -48,10 +48,12 @@ export default {
       id: Number,
       name: String,
       coutry: String,
-      temp: String,
+      temp: Number,
+      tempclass: String,
       humidity: Number,
       pressure: Number,
       lastupdate: Date,
+      full: Boolean,
       loader: Boolean,
     },
   },
@@ -149,6 +151,7 @@ export default {
 }
 
 .card-footer {
+  /* padding-top: 20px !important; */
   background-color: #f1f1f1;
   padding: 10px;
   min-height: 20px;
@@ -173,6 +176,7 @@ export default {
 }
 
 .card-footer-status {
+  height: 20px;
   display: flex;
   flex: 0 0 auto;
   justify-content: center;

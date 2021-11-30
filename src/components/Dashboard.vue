@@ -25,6 +25,7 @@ export default {
           lastupdate: "",
           loader: "",
           error: "",
+          full: false,
         },
         {
           id: 1,
@@ -36,10 +37,11 @@ export default {
           lastupdate: "",
           loader: "",
           error: "",
+          full: true,
         },
         {
           id: 2,
-          name: "Nairobil",
+          name: "Nairobi",
           country: "KE",
           temp: "",
           humidity: "",
@@ -47,14 +49,14 @@ export default {
           lastupdate: "",
           loader: "",
           error: "",
+          full: false,
         },
       ],
     };
   },
   async mounted() {
     this.getInfoCity();
-    setInterval(this.getInfoCity, 300000);
-    setInterval(this.clearCache(), 5000);
+    setInterval(this.getInfoCity, 600000);
   },
   methods: {
     async getInfoCity() {
@@ -87,7 +89,6 @@ export default {
           console.error(e);
         }
       }
-      // localStorage.setItem("cityInfos", this.citys);
     },
     dateRefactor(data) {
       return (data = [
@@ -95,10 +96,6 @@ export default {
         data.getMinutes(),
         data.getSeconds(),
       ].join(":"));
-    },
-    clearCache() {
-      // this.$store.state.citysInfo.replaceState({});
-      // localStorage.removeItem("cityInfos");
     },
   },
 };
@@ -119,6 +116,7 @@ export default {
     display: grid;
     min-width: unset;
     padding-top: 15px;
+    min-height: 750px;
   }
 }
 </style>
