@@ -1,14 +1,44 @@
 # weathernow-project
 This project is a responsive weather interface using VueJS and OpenWeather API.
 
-## Install
+### Requirements
+- NodeJS
+- Package Manager (Npm ou Yarn) 
+
+### Clone Repository
+
+```bash
+
+$ git clone https://github.com/bmpschneider/weathernow-project.git
+
+# enter the project folder
+
+$ cd weathernow-project
+
 ```
-yarn install
+
+## Install
+
+```bash
+
+$ yarn
+
+# or, use npm
+
+$ npm install
+
 ```
 
 ### Start the app
-```
+
+```bash
+
 yarn serve
+
+# or, 
+
+$ npm start
+
 ```
 
 ### Compiles and minifies for production
